@@ -6,10 +6,15 @@ import tempfile
 from pysat.formula import CNF
 import time
 import itertools
+import numpy as np
 
 def getHash(C,l):
-    C=sorted([i for i in C if i[0] >=l],key=lambda x: x[0])    
-    return str(C)
+    CC = []
+    for i in sorted(C):
+        if i[0] >= l:
+            CC.append(i)
+
+    return str(CC)
 
 def union(A,B):
     res=[]
@@ -19,13 +24,34 @@ def union(A,B):
         res.extend(X)
     return res
 
-def DiffSet(A,B):
+def is2DList(matrix_list):
+  if isinstance(matrix_list[0], list):
+    return True
+  else:
+    return False
+
+def DiffSet(A,B, contar):
+    if contar==5:
+        print("A: " + str(A) + "\n" + "B: " + str(B))
+
+    if (is2DList(A)):
+        lA = list(itertools.chain.from_iterable(A))
+    else:
+        lA = A
+
     if B==[]:
-        return A
-    lA = list(itertools.chain.from_iterable(A))
-    lB = list(itertools.chain.from_iterable(B))
+        return lA
+
+    if (is2DList(B)):
+        lB = list(itertools.chain.from_iterable(B))
+    else:
+        lB = B
+    
+    if lB==[]:
+        return lA
     
     li_dif = [item for item in lA if item not in lB]
+    
     return li_dif
     
 def Diff(x, y): 
