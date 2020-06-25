@@ -9,9 +9,8 @@ This repository is hosting the source code and scripts implementing QuickExplain
 * difficulty: A parameter to inject more difficult consistency checks, any integer representing secods can be used (dafaullt to zero)
 
 Also, the following scripts are provided:
-* qx.py: The implementation of the traditional QuickExplain algorithm.
-* qx_parallel.py: An implementation of the parallel quick explain that is executed in a secuential manner. 
-* qx_parallel_mp.py: An implementation o the parallel quick explain relying on the multiprocessing python package. 
+* fastdiag.py: The implementation of the traditional FastDiag algorithm.
+* fastdiag_parallel_mp.py: An implementation o the Parallel FastDiag relying on the multiprocessing python package. 
 
 Finally, also provide:
  * A set of models with a fixed set of conflict sets. 
