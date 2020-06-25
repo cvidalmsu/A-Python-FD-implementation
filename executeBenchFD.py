@@ -10,7 +10,7 @@ for i in cc:
     for j in range(3):
         productPath="./cnf/bench/prod-"+i+"-"+str(j)+".prod"
         for solver in ["Sat4j"]:    
-            for lmax in ["3","2","1","0"]:
+            for lmax in ["6","5","4","3","2","1","0"]:
                 for difficulty in ["0","50","100"]:
                     if lmax == "0":
                         print("    python3 ./fmdiag.py " + modelPath + " "+productPath+" "+lmax+" "+solver+" "+difficulty)
