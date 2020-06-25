@@ -53,7 +53,7 @@ def FDGen(D, S, AC, d, l):
                 cache.update({hash:future})
         
         if f(S)==1 and f(D)>0:
-            FDGen([], D, utils.DiffSet(AC,[S[0]]),[S[0]],l+1)
+            FDGen([], D, Diff(AC,[S[0]]),[S[0]],l+1)
         elif f(S)>1 :
             if(len(S)>1):
                 k=int(len(S)/2) 
