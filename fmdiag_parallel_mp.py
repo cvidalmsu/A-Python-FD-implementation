@@ -38,22 +38,24 @@ def f(AC):
 #-----------------QX functions definition---------------
 #-------------------------------------------------------
 def FDGen(D, S, AC, d, l):
-    global genhash
+    global genhash, contar
     if l< lmax :
         if f(d)>0 :
-            u=utils.DiffSet(AC,D)
-             
+ #           print("antes")
+            u=utils.DiffSet(AC,D,0)
             if(genhash == ""):
-                hash=utils.getHash(u,len(modelCNF.clauses))
+                hash=utils.getHash(u,len(modelCNF.clauses))                
             else:
                 hash=genhash
                 genhash=""
+#            print("despues")
+      
             if (not (hash in cache)):#evito crear multiples hilos si ya esta en ejecución
                 future=pool.apply_async(callConsistencyCheck,args=([u]))
                 cache.update({hash:future})
         
         if f(S)==1 and f(D)>0:
-            FDGen([], D, utils.DiffSet(AC,[S[0]]),[S[0]],l+1)
+            FDGen([], D, utils.DiffSet(AC,[S[0]], 0),[S[0]],l+1)
         elif f(S)>1 :
             if(len(S)>1):
                 k=int(len(S)/2) 
@@ -65,7 +67,23 @@ def FDGen(D, S, AC, d, l):
                 Sb=[S[0][k:len(S[0])]]
             FDGen(Sb + D, Sa, AC, Sb, l+1)
         if f(D)>0 and f(d)>0  :
-            FDGen(utils.DiffSet(D,[D[0]]), [D[0]], AC,[],l+1)
+#            print("1a - D: " + str(D))
+#            print("D[0]: " + str([D[0]]))
+#            contar=contar+1
+#            print("aqui")
+#            if contar==5:
+#                print("Acaaaaaaaa " + str(D))
+            FDGen(Difff(D,[D[0]]), [D[0]], AC,[],l+1)
+            #print("2")
+
+def Difff(x, y): 
+#    print("x: " + str(x))
+#    print("y: " + str(y))
+    
+    li_dif = [item for item in x if item not in y]
+#    print("diff: " + str(li_dif))
+    
+    return li_dif
 
 def consistent(D, S, AC):
     global genhash
@@ -106,8 +124,8 @@ if __name__ == '__main__':
     lmax=2
     cache={}
     count=0
+    contar=1
     genhash=""
-    
     if len(sys.argv) > 1:
         model=sys.argv[1]
         requirements=sys.argv[2]
@@ -116,13 +134,13 @@ if __name__ == '__main__':
         difficulty=sys.argv[5]
         difficulty=int(sys.argv[5])
     else:
-        lmax=int(3)
-        requirements="./cnf/paperF/p2.prod"
-        model="./cnf/paperF/fm.cnf"
+        lmax=int(5)
+#        requirements="./cnf/paperB/p1.prod"
+#        model="./cnf/paperB/fm.cnf"
         solver="Sat4j"
         difficulty=int(0)
-#        requirements="./cnf/bench/prod-16-0.prod"
-#        model="./cnf/bench/model_16.cnf"
+        requirements="./cnf/bench/prod-16-0.prod"
+        model="./cnf/bench/model_16.cnf"
     
     modelCNF = CNF(from_file=model)
     requirementsCNF = CNF(from_file=requirements)
