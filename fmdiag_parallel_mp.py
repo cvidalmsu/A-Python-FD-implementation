@@ -38,17 +38,15 @@ def f(AC):
 #-----------------QX functions definition---------------
 #-------------------------------------------------------
 def FDGen(D, S, AC, d, l):
-    global genhash, contar
+    global genhash
     if l< lmax :
         if f(d)>0 :
- #           print("antes")
             u=utils.DiffSet(AC,D,0)
             if(genhash == ""):
                 hash=utils.getHash(u,len(modelCNF.clauses))                
             else:
                 hash=genhash
                 genhash=""
-#            print("despues")
       
             if (not (hash in cache)):#evito crear multiples hilos si ya esta en ejecución
                 future=pool.apply_async(callConsistencyCheck,args=([u]))
@@ -67,21 +65,7 @@ def FDGen(D, S, AC, d, l):
                 Sb=[S[0][k:len(S[0])]]
             FDGen(Sb + D, Sa, AC, Sb, l+1)
         if f(D)>0 and f(d)>0  :
-#            print("1a - D: " + str(D))
-#            print("D[0]: " + str([D[0]]))
-#            contar=contar+1
-#            print("aqui")
-#            if contar==5:
-#                print("Acaaaaaaaa " + str(D))
-            FDGen(Difff(D,[D[0]]), [D[0]], AC,[],l+1)
-            #print("2")
-
-def Difff(x, y): 
-#    print("x: " + str(x))
-#    print("y: " + str(y))
-    
-    li_dif = [item for item in x if item not in y]
-#    print("diff: " + str(li_dif))
+            FDGen(Diff(D,[D[0]]), [D[0]], AC,[],l+1)
     
     return li_dif
 
@@ -124,7 +108,6 @@ if __name__ == '__main__':
     lmax=2
     cache={}
     count=0
-    contar=1
     genhash=""
     if len(sys.argv) > 1:
         model=sys.argv[1]
@@ -140,6 +123,7 @@ if __name__ == '__main__':
         solver="Sat4j"
         difficulty=int(0)
         requirements="./cnf/bench/prod-16-0.prod"
+        model="./cnf/bench/model_16.cnf"
         model="./cnf/bench/model_16.cnf"
     
     modelCNF = CNF(from_file=model)

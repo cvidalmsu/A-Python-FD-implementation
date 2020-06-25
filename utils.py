@@ -30,10 +30,7 @@ def is2DList(matrix_list):
   else:
     return False
 
-def DiffSet(A,B, contar):
-    if contar==5:
-        print("A: " + str(A) + "\n" + "B: " + str(B))
-
+def DiffSet(A,B):
     if (is2DList(A)):
         lA = list(itertools.chain.from_iterable(A))
     else:
@@ -50,8 +47,7 @@ def DiffSet(A,B, contar):
     if lB==[]:
         return lA
     
-    li_dif = [item for item in lA if item not in lB]
-    
+    li_dif = [item for item in lA if item not in lB]    
     return li_dif
     
 def Diff(x, y): 
