@@ -1,0 +1,14 @@
+c CNF file
+c var 1 = car
+c var 2 = cartype
+c var 3 = fuel
+c var 4 = pdc
+c var 5 = color
+c var 6 = skibag
+p cnf 6 6
+1 0
+2 0
+-3 0
+-4 0
+-5 0
+6 0

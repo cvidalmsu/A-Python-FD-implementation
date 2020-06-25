@@ -1,0 +1,6 @@
+c CNF file
+c var 1 = car
+c var 2 = cartype
+p cnf 2 2
+-1 0
+2 0

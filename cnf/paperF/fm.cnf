@@ -1,0 +1,46 @@
+c CNF file
+c var 1 = car
+c var 2 = cartype
+c var 3 = fuel
+c var 4 = pdc
+c var 5 = color
+c var 6 = skibag
+c var 7 = s
+c var 8 = c
+c var 9 = p
+c var 10 = d
+c var 11 = y
+c var 12 = n
+c var 13 = b
+c var 14 = r
+c var 15 = g
+p cnf 15 29
+1 0
+-1 2 0
+-2 1 0
+-1 3 0
+-3 1 0
+-1 4 0
+-4 1 0
+-1 5 0
+-5 1 0
+-6 1 0
+-2 7 8 0
+-7 2 0
+-8 2 0
+-7 -8 0
+-3 9 10 0
+-9 3 0
+-10 3 0
+-9 -10 0
+-4 11 12 0
+-11 4 0
+-12 4 0
+-11 -12 0
+-5 13 14 15 0
+-13 5 0
+-14 5 0
+-15 5 0
+-13 -14 -15 0
+-8 13 0
+-6 7 0
