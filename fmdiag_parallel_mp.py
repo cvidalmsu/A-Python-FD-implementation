@@ -67,8 +67,6 @@ def FDGen(D, S, AC, d, l):
         if f(D)>0 and f(d)>0  :
             FDGen(Diff(D,[D[0]]), [D[0]], AC,[],l+1)
     
-    return li_dif
-
 def consistent(D, S, AC):
     global genhash
     genhash=hashAC=utils.getHash(AC,len(modelCNF.clauses))
@@ -117,7 +115,7 @@ if __name__ == '__main__':
         difficulty=sys.argv[5]
         difficulty=int(sys.argv[5])
     else:
-        lmax=int(5)
+        lmax=int(6)
 #        requirements="./cnf/paperB/p1.prod"
 #        model="./cnf/paperB/fm.cnf"
         solver="Sat4j"
