@@ -1,6 +1,6 @@
-# A-Python-QX-implementation
+# A-Python-FD-implementation
 
-This repository is hosting the source code and scripts implementing QuickExplain and Parallel QuickExplain, the scripts allows the following paramenter:
+This repository is hosting the source code and scripts implementing FastDiag and Parallel FastDiag, the scripts allows the following paramenter:
 
 * model: A CNF file depicting the constraints representing the background knowledge for the algorithm (e.g. the constraints in a feature model)
 * product: A CNF file representing the product selection or user requirements to look for the confict set. 
