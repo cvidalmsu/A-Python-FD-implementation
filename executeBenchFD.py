@@ -16,8 +16,8 @@ for i in cc:
                         print("    python3 ./fmdiag.py " + modelPath + " "+productPath+" "+lmax+" "+solver+" "+difficulty)
                         os.system("python3 ./fmdiag.py " + modelPath + " "+productPath+" "+lmax+" "+solver+" "+difficulty+" >>"+ " resultFD.csv")
                     else:
-                        print("    python3 ./fd_parallel_mp.py " + modelPath + " "+productPath+" "+lmax+" "+solver+" "+difficulty)
-                        os.system("python3 ./fd_parallel_mp.py " + modelPath + " "+productPath+" "+lmax+" "+solver+" "+difficulty+" >>"+ " resultFD.csv")
+                        print("    python3 ./fmdiag_parallel_mp.py " + modelPath + " "+productPath+" "+lmax+" "+solver+" "+difficulty)
+                        os.system("python3 ./fmdiag_parallel_mp.py " + modelPath + " "+productPath+" "+lmax+" "+solver+" "+difficulty+" >>"+ " resultFD.csv")
 
 reqtime = time.time() - starttime
 print("Sat4j time: "+str(reqtime))
