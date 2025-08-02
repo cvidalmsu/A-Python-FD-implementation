@@ -1,0 +1,8 @@
+[2025-07-27 14:31:00] START: FastDiag(C) | Depth=0 | Parent=None
+[2025-07-27 14:31:01] RECURSE: FastDiag(C1) | Depth=1 | Parent=0
+[2025-07-27 14:31:01] RECURSE: FastDiag(C11) | Depth=2 | Parent=1
+[2025-07-27 14:31:01] CHECK: Consistency(C11) = UNSAT
+[2025-07-27 14:31:01] BACKTRACK to C12
+[2025-07-27 14:31:02] CHECK: Consistency(C12) = SAT
+[2025-07-27 14:31:02] RETURN: Minimal Diagnosis Found: [c2, c4]
+[2025-07-27 14:31:03] END: FastDiag(C) | TotalTime=3.02s
